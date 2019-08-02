@@ -1,7 +1,7 @@
 package kata.tamingsmellycode;
 
 public class AnotherService {
-    public static String aStaticMethod() {
+    public static String aStaticMethodWhichToBeMocked() {
         return null;
     }
 }

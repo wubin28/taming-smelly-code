@@ -1,10 +1,10 @@
 package kata.tamingsmellycode;
 
 public class AClassNeedToBeTested {
-    private AnotherDependedOnComponentNeedToBeMocked memberVariable;
+    private NewADependedOnComponentWhichToBeMocked memberVariable;
 
     public AClassNeedToBeTested() {
-        this.memberVariable = new AnotherDependedOnComponentNeedToBeMocked();
+        this.memberVariable = new NewADependedOnComponentWhichToBeMocked();
         // 3. Parameterize Constructor
         // 9. Extract & Override Factory Method
     }
@@ -18,24 +18,24 @@ public class AClassNeedToBeTested {
     }
 
     public void anotherMethod() {
-        TheThirdDependedOnComponentNeedToBeMocked aVariable =
-                new TheThirdDependedOnComponentNeedToBeMocked();
+        NewADependedOnComponentWhichToBeMocked aVariable =
+                new NewADependedOnComponentWhichToBeMocked();
         // 4. Parameterize Method
         // 8. Subclass & Override Method
     }
 
     public void theThirdMethod() {
-        AService.aStaticMethod();
+        AService.aStaticMethodWhichToBeMocked();
         // 5. Introduce Instance Delegator
     }
 
     public void theFourthMethod() {
-        String aVariable = AnotherService.aStaticMethod();
+        String aVariable = AnotherService.aStaticMethodWhichToBeMocked();
         // 10. Extract & Override Call
         // 11. Replace Global Reference with Getter
     }
 
-    public void aLargeMethodUsingManyInstanceDataAndMethods() {
+    public void aLargeMethodUsingManyInstanceDataAndMethodsNotToBeTested() {
         // 6. Break out Method Object
     }
 
