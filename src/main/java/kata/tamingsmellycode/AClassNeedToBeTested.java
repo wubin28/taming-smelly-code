@@ -42,7 +42,11 @@ public class AClassNeedToBeTested {
     public void aMethodUsedSingletonWhichToBeMocked() {
         Singleton singleton = Singleton.getInstance();
         // 7. Introduce Static Setter
+    }
 
+    public void aMethodUsedAnInstanceCreatedFromAGlobalFactoryWhichToBeMocked() {
+        Product product = GlobalFactory.makeProduct();
+        // 7. Introduce Static Setter
     }
 }
 
@@ -57,5 +61,11 @@ class Singleton {
             singleInstance = new Singleton();
         }
         return singleInstance;
+    }
+}
+
+class GlobalFactory {
+    public static Product makeProduct() {
+        return new Product();
     }
 }
