@@ -3,35 +3,45 @@ package kata.tamingsmellycode;
 public class AClassNeedToBeTested {
     private NewADependedOnComponentWhichToBeMocked memberVariable;
 
+    // tlc11
+    private static final DryConfiguration dryConfiguration = AppConfiguration.getDryConfiguration();
+
+    private static ModelReader reader;
+
+    private static TransactionManager tm;
+
+    static {
+        reader = new ModelReader(AppConfig.getDryConfiguration());
+        XMLStore persister = new XMLStore(dryConfiguration);
+        tm = new TransactionManager(reader, persister);
+    }
+
+
     public AClassNeedToBeTested() {
         this.memberVariable = new NewADependedOnComponentWhichToBeMocked();
-        // k3. Parameterize Constructor
-        // k5. Extract & Override Factory Method
+        // tlc4. Parameterize Constructor
+
+        AService.aStaticMethodWhichToBeMocked();
+        // tlc6. Introduce Instance Delegator
     }
 
     public AClassNeedToBeTested(ParameterToBeMOcked parameterToBeMOcked) {
-        // k1. Extract Interface
+        // tlc1. Extract Interface
     }
 
-    public void aMethod(HttpServletRequestWhichIsHardToMock httpServletRequestWhichIsHardToMock) {
-        // k2. Adapt Parameter
+    public void aMethod(HttpServletRequest httpServletRequest) {
+        // tlc1. Adapt Parameter
     }
 
     public void anotherMethod() {
         NewADependedOnComponentWhichToBeMocked aVariable =
                 new NewADependedOnComponentWhichToBeMocked();
-        // k4. Parameterize Method
-        // k5. Extract & Override Factory Method
+        // tlc4. Parameterize Method
     }
 
     public void theThirdMethod() {
         AService.aStaticMethodWhichToBeMocked();
-        // k6. Introduce Instance Delegator
-    }
-
-    public void theFourthMethod() {
-        String aVariable = AnotherService.aStaticMethodWhichToBeMocked();
-        // k7. Extract & Override Call
+        // tlc6. Introduce Instance Delegator
     }
 
     public void aLargeMethodWithManyInstanceDataAndMethodsNotToBeTested() {
